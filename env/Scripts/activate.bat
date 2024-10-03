@@ -8,7 +8,11 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
+<<<<<<< HEAD
 set VIRTUAL_ENV=C:\Users\ACER\Desktop\Lakhan(All)\Network_ai_backend\env
+=======
+set VIRTUAL_ENV=C:\Users\Lenovo\Desktop\python project\Network Ai\env
+>>>>>>> 664b7ec50a1fbc972fb42860c630e4526731a65d
 
 if not defined PROMPT set PROMPT=$P$G
 
