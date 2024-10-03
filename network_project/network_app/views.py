@@ -65,8 +65,8 @@ def login_view(request):
     return render(request, 'login.html')
 # Create your views here.
 def home(request):
-    return HttpResponse('Welcome to home')
+    return render(request,'signup.html')
 
 def signup(request):
-    return render(request,'./templates/signup.html')
+    return render(request,'signup.html')
 

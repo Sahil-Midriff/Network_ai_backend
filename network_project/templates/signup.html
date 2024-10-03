@@ -1,285 +1,81 @@
-<style>
-  :root {
-    --body-bg: #c1bdba;
-    --form-bg: #13232f;
-    --white: #ffffff;
-    --main: #1ab188;
-    --main-light: #1cc49a; /* Adjusted manually */
-    --main-dark: #189b77; /* Adjusted manually */
-    --gray-light: #a0b3b0;
-    --gray: #ddd;
-    --thin: 300;
-    --normal: 400;
-    --bold: 600;
-    --br: 4px;
-  }
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign Up Form</title>
+        <link rel="stylesheet" href="https://codepen.io/gymratpacks/pen/VKzBEp#0">
+        <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
 
-  *,
-  *:before,
-  *:after {
-    box-sizing: border-box;
-  }
+        <link rel="stylesheet" href="{% static 'css/login.css' %}">
 
-  html {
-    overflow-y: scroll;
-  }
-
-  body {
-    background: var(--body-bg);
-    font-family: "Titillium Web", sans-serif;
-  }
-
-  a {
-    text-decoration: none;
-    color: var(--main);
-    transition: 0.5s ease;
-  }
-
-  a:hover {
-    color: var(--main-dark);
-  }
-
-  .form {
-    background: rgba(19, 35, 47, 0.9); /* var(--form-bg) used directly */
-    padding: 40px;
-    max-width: 600px;
-    margin: 40px auto;
-    border-radius: var(--br);
-    box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3); /* adjusted manually */
-  }
-
-  .tab-group {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 40px 0;
-  }
-
-  .tab-group:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-
-  .tab-group li a {
-    display: block;
-    text-decoration: none;
-    padding: 15px;
-    background: rgba(var(--gray-light), 0.25);
-    color: var(--gray-light);
-    font-size: 20px;
-    float: left;
-    width: 50%;
-    text-align: center;
-    cursor: pointer;
-    transition: 0.5s ease;
-  }
-
-  .tab-group li a:hover {
-    background: var(--main-dark);
-    color: var(--white);
-  }
-
-  .tab-group .active a {
-    background: var(--main);
-    color: var(--white);
-  }
-
-  .tab-content > div:last-child {
-    display: none;
-  }
-
-  h1 {
-    text-align: center;
-    color: var(--white);
-    font-weight: var(--thin);
-    margin: 0 0 40px;
-  }
-
-  label {
-    position: absolute;
-    transform: translateY(6px);
-    left: 13px;
-    color: rgba(var(--white), 0.5);
-    transition: all 0.25s ease;
-    pointer-events: none;
-    font-size: 22px;
-  }
-
-  label .req {
-    margin: 2px;
-    color: var(--main);
-  }
-
-  label.active {
-    transform: translateY(50px);
-    left: 2px;
-    font-size: 14px;
-  }
-
-  label.highlight {
-    color: var(--white);
-  }
-
-  input,
-  textarea {
-    font-size: 22px;
-    display: block;
-    padding: 5px 10px;
-    background: none;
-    border: 1px solid var(--gray-light);
-    color: var(--white);
-    transition: border-color 0.25s ease, box-shadow 0.25s ease;
-  }
-
-  /* Reduce width for email input */
-  input[type="email"] {
-    width: 100%; /* Full width for email */
-  }
-
-  /* Password input field */
-  input[type="password"] {
-    width: 100%; /* Full width for password */
-  }
-
-  input:focus,
-  textarea:focus {
-    outline: none;
-    border-color: var(--main);
-  }
-
-  textarea {
-    border: 2px solid var(--gray-light);
-    resize: vertical;
-  }
-
-  .field-wrap {
-    position: relative;
-    margin-bottom: 40px;
-  }
-
-  .top-row {
-    content: "";
-    display: flex; /* Use flexbox for better alignment */
-    justify-content: space-between; /* Space out the columns */
-    margin-bottom: 40px; /* Add margin for spacing */
-  }
-
-  .top-row > div {
-    width: 48%; /* Ensure each field takes up less than 50% */
-  }
-
-  .button {
-    border: 0;
-    padding: 15px 0;
-    font-size: 2rem;
-    font-weight: var(--bold);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    background: var(--main);
-    color: var(--white);
-    transition: all 0.5s ease;
-  }
-
-  .button:hover,
-  .button:focus {
-    background: var(--main-dark);
-  }
-
-  .button-block {
-    display: block;
-    width: 100%;
-  }
-
-  .forgot {
-    margin-top: -20px;
-    text-align: right;
-  }
-</style>
-<div class="form">
-  <ul class="tab-group">
-    <li class="tab active"><a href="#signup">Sign Up</a></li>
-    <li class="tab"><a href="#login">Log In</a></li>
-  </ul>
-
-  <div class="tab-content">
-    <div id="signup">
-      <h1>Sign Up for Free</h1>
-      <form action="/" method="post">
-        <div class="top-row">
-          <div class="field-wrap">
-            <label>First Name<span class="req">*</span></label>
-            <input type="text" required autocomplete="off" />
-          </div>
-          <div class="field-wrap">
-            <label>Last Name<span class="req">*</span></label>
-            <input type="text" required autocomplete="off" />
-          </div>
+    </head>
+    <body>
+      <div class="row">
+    <div class="col-md-12">
+      <form action="index.html" method="post">
+        <h1> Sign Up </h1>
+        
+        <fieldset>
+          
+          <legend><span class="number">1</span> Your Basic Info</legend>
+        
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="user_name">
+        
+          <label for="email">Email:</label>
+          <input type="email" id="mail" name="user_email">
+       
+          <label for="password">Password:</label>
+          <input type="password" id="password"       name="user_password">
+        
+          <label>Age:</label>
+          <input type="radio" id="under_13" value="under_13" name="user_age"><label for="under_13" class="light">Under 13</label><br>
+          <input type="radio" id="over_13" value="over_13" name="user_age"><label for="over_13" class="light">Over 13</label>
+          
+        </fieldset>
+        <fieldset>  
+        
+          <legend><span class="number">2</span> Your Profile</legend>
+          
+         <label for="bio">Bio:</label>
+          <textarea id="bio" name="user_bio"></textarea>
+        
+       
+        
+         <label for="job">Job Role:</label>
+          <select id="job" name="user_job">
+            <optgroup label="Web">
+              <option value="frontend_developer">Front-End Developer</option>
+              <option value="php_developer">PHP Developer</option>
+              <option value="python_developer">Python Developer</option>
+              <option value="rails_developer">Rails Developer</option>
+              <option value="web_designer">Web Designer</option>
+              <option value="wordpress_developer">Wordpress Developer</option>
+            </optgroup>
+            <optgroup label="Mobile">
+              <option value="android_developer">Android Developer</option>
+              <option value="ios_developer">IOS Developer</option>
+              <option value="mobile_designer">Mobile Designer</option>
+            </optgroup>
+            <optgroup label="Business">
+              <option value="business_owner">Business Owner</option>
+              <option value="freelancer">Freelancer</option>
+            </optgroup>
+          </select>
+          
+          <label>Interests:</label>
+          <input type="checkbox" id="development" value="interest_development" name="user_interest"><label class="light" for="development">Development</label><br>
+          <input type="checkbox" id="design" value="interest_design" name="user_interest"><label class="light" for="design">Design</label><br>
+          <input type="checkbox" id="business" value="interest_business" name="user_interest"><label class="light" for="business">Business</label>
+          
+         </fieldset>
+       
+        <button type="submit">Sign Up</button>
+        
+       </form>
         </div>
-        <div class="field-wrap">
-          <label>Email Address<span class="req">*</span></label>
-          <input type="email" required autocomplete="off" />
-        </div>
-        <div class="field-wrap">
-          <label>Set A Password<span class="req">*</span></label>
-          <input type="password" required autocomplete="off" />
-        </div>
-        <button type="submit" class="button button-block">Get Started</button>
-      </form>
-    </div>
-
-    <div id="login">
-      <h1>Welcome Back!</h1>
-      <form action="/" method="post">
-        <div class="field-wrap">
-          <label>Email Address<span class="req">*</span></label>
-          <input type="email" required autocomplete="off" />
-        </div>
-        <div class="field-wrap">
-          <label>Password<span class="req">*</span></label>
-          <input type="password" id="password" required autocomplete="off" />
-        </div>
-        <p class="forgot"><a href="#">Forgot Password?</a></p>
-        <button type="submit" class="button button-block">Log In</button>
-      </form>
-    </div>
-  </div>
-</div>
-
-<script>
-  document
-    .querySelectorAll(".form input, .form textarea")
-    .forEach(function (input) {
-      input.addEventListener("focus", function () {
-        let label = this.previousElementSibling;
-        label.classList.add("highlight");
-      });
-
-      input.addEventListener("blur", function () {
-        let label = this.previousElementSibling;
-        if (this.value === "") {
-          label.classList.remove("active", "highlight");
-        } else {
-          label.classList.add("active");
-          label.classList.remove("highlight");
-        }
-      });
-    });
-
-  document.querySelectorAll(".tab a").forEach(function (tab) {
-    tab.addEventListener("click", function (e) {
-      e.preventDefault();
-      document.querySelectorAll(".tab").forEach(function (item) {
-        item.classList.remove("active");
-      });
-      this.parentElement.classList.add("active");
-
-      let target = document.querySelector(this.getAttribute("href"));
-      document
-        .querySelectorAll(".tab-content > div")
-        .forEach(function (content) {
-          content.style.display = "none";
-        });
-      target.style.display = "block";
-    });
-  });
-</script>
+      </div>
+      
+    </body>
+</html>
