@@ -27,13 +27,13 @@ def signup_view(request):
         age       = request.POST.get('age')
         password  = request.POST.get('password')
 
-        if cuser.objects.filter(email=email).exists() or cuser.objects.filter(phone_no=phone_no).exists():
-            return render(request, 'signup.html', {'error': 'Email or phone number already exists.'})
+        if Cuser.objects.filter(email=email).exists() or Cuser.objects.filter(phone_no=phone_no).exists():
+            return render(request, 'new_signup.html', {'error': 'Email or phone number already exists.'})
 
         user = User.objects.create_user(username=email, email=email, password=password)
         user.save()
 
-        signup_data = cuser.objects.create(user=user,full_name=full_name, phone_no=phone_no, address=address, age=age)
+        signup_data = Cuser.objects.create(user=user,full_name=full_name, phone_no=phone_no, address=address, age=age)
         signup_data.save()
 
         return redirect('login')
@@ -48,11 +48,11 @@ def login_view(request):
 
         try:
             if '@' in email_or_phone:
-                user = cuser.objects.get(email=email_or_phone)
+                user = Cuser.objects.get(email=email_or_phone)
             else:
-                user_data = cuser.objects.get(phone_no=email_or_phone)
+                user_data = Cuser.objects.get(phone_no=email_or_phone)
                 user = user_data.user
-        except (cuser.DoesNotExist):
+        except (Cuser.DoesNotExist):
             return render(request, 'login.html', {'error_message': 'Invalid email/phone or password. Please try again.'})
 
         user = authenticate(request, username=user.username, password=password)
