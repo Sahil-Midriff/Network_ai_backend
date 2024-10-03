@@ -20,21 +20,18 @@ def email_validation(value):
 
 def signup_view(request):
     if request.method == 'POST':
-        full_name = request.POST.get('full_name')
-        email     = request.POST.get('email',validator =[email_validation])
+        email     = request.POST.get('email') 
         phone_no  = request.POST.get('phone_no')
         address   = request.POST.get('address')
         age       = request.POST.get('age')
         password  = request.POST.get('password')
 
+
         if Cuser.objects.filter(email=email).exists() or Cuser.objects.filter(phone_no=phone_no).exists():
-            return render(request, 'new_signup.html', {'error': 'Email or phone number already exists.'})
+            return render(request, 'signup.html', {'error': 'Email or phone number already exists.'})
 
-        user = User.objects.create_user(username=email, email=email, password=password)
+        user = Cuser.objects.create_user(username=email, email=email, password=password)
         user.save()
-
-        signup_data = Cuser.objects.create(user=user,full_name=full_name, phone_no=phone_no, address=address, age=age)
-        signup_data.save()
 
         return redirect('login')
 
@@ -67,6 +64,6 @@ def login_view(request):
 def home(request):
     return render(request,'signup.html')
 
-def signup(request):
-    return render(request,'signup.html')
+# def signup(request):
+#     return render(request,'signup.html')
 
