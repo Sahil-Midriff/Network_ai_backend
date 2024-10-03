@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'network_app',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -134,6 +135,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+AUTH_USER_MODEL ='network_app.Cuser'
 
 # Now you can access the variables like this:
 db_name = os.getenv('DB_NAME')
